@@ -2,9 +2,8 @@ const app = require('express')()
 require('dotenv').config()
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
-// const handleUpcomingTodo = require('./controller/handleUpcomingTodo')
+const router = require('./controller/handleHttpRequest')
 
-// handleUpcomingTodo(10000) 
 app.use(bodyParser.json())
 app.use(require('cors')())
 app.listen(3001, ()=>console.log('listen at 3001'))
@@ -16,8 +15,9 @@ app.listen(3001, ()=>console.log('listen at 3001'))
 //     .end('<h1>Hello World</h1>')
 // })
 app.use(morgan('combined'))
-app.use('/',require('./controller/handleHttpRequest'))
-// app.use('/api',require('./controller/handleApiRequest'))
+app.use('/',router)
+
+//handle error
 app.use((error, req, res, next) => {
     console.log(error)
     if(error.name === 'MongoError'){

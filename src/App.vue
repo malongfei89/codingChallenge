@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="container">
     <ButtonGroup :btns="infoOfBtn" @addColor="addColor"/>
-    <Display :numOfSpans="numOfSpans" :spanNeedColor="spanNeedColor"/>
+    <Display :distributedGraph="distributedGraph" :target="target"/>
   </div>
 </template>
 
@@ -13,9 +13,9 @@ import service from './service/service'
 export default {
   data:()=>{
     return {
-      infoOfBtn: null,
-      numOfSpans: 0,
-      spanNeedColor: []
+      target: '',
+      infoOfBtn: [],
+      distributedGraph: []
     }
   },
   name: 'app',
@@ -27,18 +27,18 @@ export default {
     try {
       let result = (await service.getAll()).data
       this.infoOfBtn = result.listOfTypes
-      this.numOfSpans = result.total
+      this.distributedGraph = result.answer
+      //check block
+      for(let ele of this.infoOfBtn){
+        console.log(ele, 'has', this.distributedGraph.filter(unit => unit === ele).length, 'nodes')
+      }
     } catch(error){
       console.log(error)
     }
   },
   methods:{
-    async addColor(e){
-      if(sessionStorage.getItem(`array${e}`)) this.spanNeedColor = JSON.parse(sessionStorage.getItem(`array${e}`))
-      else {
-        this.spanNeedColor = (await service.getNumByType(e)).data
-        sessionStorage.setItem(`array${e}`, JSON.stringify(this.spanNeedColor))
-      }
+    addColor(e){
+      this.target=e
     }
   }
 }

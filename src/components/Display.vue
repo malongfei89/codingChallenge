@@ -1,8 +1,8 @@
 <template>
   <div>
     <div>
-      <span v-for="num in numOfSpans" :key=num class="mr-1">
-        <i :class="[spanNeedColor.includes(num)?'fas fa-square fa-3x text-danger':'fas fa-square fa-3x text-success']"></i>
+      <span v-for="(ele, index) in distributedGraph" :key=index class="mr-1">
+        <i :class="[ele===target?'fas fa-square fa-2x text-danger':'fas fa-square fa-2x text-success']"></i>
       </span>
     </div>
   </div>
@@ -11,8 +11,8 @@
 <script>
 export default {
   props:{
-    numOfSpans: Number, 
-    spanNeedColor:Array
+    distributedGraph: Array,
+    target:String
   }
 }
 </script>
