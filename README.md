@@ -3,6 +3,10 @@
 ## URL
 http://ec2-3-134-94-92.us-east-2.compute.amazonaws.com/codingChallenge/
 
+## Note for testing
+I console.log the number of nodes for each type in front end, I checked it with back-end to make sure it's working.
+
+
 ### Structure
 FrontEnd: a copy of all source files in root static folder
 BackEnd: all source file in server folder
