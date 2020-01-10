@@ -10,9 +10,13 @@ async function getInitialData (){
 }
 
 router.get('/', async (req, res, next)=> {
-    await getInitialData()
-    answer = await getIndices(total, listOfTypes)
-    res.send({listOfTypes, answer})
-    
+    //this if...else is optional, could only have the code in else block
+    if(listOfTypes && answer) {
+        res.send({listOfTypes, answer})
+    } else{
+        await getInitialData()
+        answer = await getIndices(total, listOfTypes)
+        res.send({listOfTypes, answer})
+    }
 })
 module.exports=router

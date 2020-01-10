@@ -6,7 +6,7 @@ const router = require('./controller/handleHttpRequest')
 
 app.use(bodyParser.json())
 app.use(require('cors')())
-app.listen(3001, ()=>console.log('listen at 3001'))
+app.listen(3003, ()=>console.log('listen at 3003'))
 // app.get('/', (req, res, next) => {
 //     console.log('get')
 //     res.writeHead(200, {
