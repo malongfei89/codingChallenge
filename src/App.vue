@@ -1,6 +1,7 @@
 <template>
   <div id="app" class="container">
-    <ButtonGroup :btns="infoOfBtn" @addColor="addColor"/>
+    <p class="font-italic h3">This app is to provide visualization of how data of different type can be evenly distributed by an algorithm!</p>
+    <ButtonGroup :btns="infoOfBtn" @addColor="addColor" class="mb-3"/>
     <Display :distributedGraph="distributedGraph" :target="target"/>
   </div>
 </template>
