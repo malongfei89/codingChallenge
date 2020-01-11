@@ -5,11 +5,12 @@ let source = new maxHeap()
 async function getNumOfEachType(listOfTypes){
     for(let aType of listOfTypes){
         let total = await query.getNumByType(aType)
-        console.log('type:', aType,'has', total,'nodes')
+        // console.log('type:', aType,'has', total,'nodes')
         source.insert({type:aType, total})
     }
 }
 
+//detailed explanation please see readme.md on github
 module.exports= async function getIndices(total, listOfTypes){
     let answer = []
     await getNumOfEachType(listOfTypes)

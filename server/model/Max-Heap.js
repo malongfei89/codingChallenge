@@ -7,6 +7,7 @@ module.exports = class MinHeap{
         if(typeof root === 'Object') this.container = [root]
         else this.container = []
     }
+    //called after inserting a new node into heap
     _reheap(index){
         let targetIndex
         if(index%2) targetIndex = (index-1)/2
@@ -20,6 +21,7 @@ module.exports = class MinHeap{
             }
         }
     }
+    //called after removing root from heap
     _reheapTopDown(index, endIndex=this.container.length-1){
         if((index * 2)+2 <= endIndex){
             let left = (index * 2)+1
@@ -63,8 +65,8 @@ module.exports = class MinHeap{
                         if( parent.total < arguments[i].total){
                             this.container[parentIndex] = arguments[i]
                             this.container[this.container.length] = parent
-                            this._reheap(parentIndex)
                             //reheap
+                            this._reheap(parentIndex)
                         } else this.container[this.container.length] = arguments[i]
                         left = !left
                     } else {
@@ -73,8 +75,8 @@ module.exports = class MinHeap{
                         if( parent.total < arguments[i].total){
                             this.container[parentIndex] = arguments[i]
                             this.container[this.container.length] = parent
-                            this._reheap(parentIndex)
                             //reheap
+                            this._reheap(parentIndex)
                         } else this.container[this.container.length] = arguments[i]
                         left = !left
                     }
@@ -90,8 +92,8 @@ module.exports = class MinHeap{
                             if( parent.total < arguments[i].total){
                                 this.container[parentIndex] = arguments[i]
                                 this.container[this.container.length] = parent
-                                this._reheap(parentIndex)
                                 //reheap
+                                this._reheap(parentIndex)
                             } else this.container[this.container.length] = arguments[i]
                             left = !left
                         } else {
@@ -100,8 +102,8 @@ module.exports = class MinHeap{
                             if( parent.total < arguments[i].total){
                                 this.container[parentIndex] = arguments[i]
                                 this.container[this.container.length] = parent
-                                this._reheap(parentIndex)
                                 //reheap
+                                this._reheap(parentIndex)
                             } else this.container[this.container.length] = arguments[i]
                             left = !left
                         }
@@ -110,6 +112,7 @@ module.exports = class MinHeap{
             }
         }
     }
+    //get value of root without removing it from heap 
     peek(){
         if(this.container.length) return this.container[0]
     }
@@ -124,6 +127,7 @@ module.exports = class MinHeap{
             return answer
         }
     }
+    
     // sort(){
     //     let reapTimes, endIndex
     //     endIndex = reapTimes= this.container.length-1
