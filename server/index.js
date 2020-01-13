@@ -25,4 +25,5 @@ app.use((error, req, res, next) => {
             default:
         }
     } else if(error.name==='CustomError') res.status(error.status).send({error: error.message})
+    else res.status(500)
 })

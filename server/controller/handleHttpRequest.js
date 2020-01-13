@@ -1,7 +1,7 @@
 const query = require('../model/query')
 const router = require('express').Router()
 const getIndices = require('../model/getIndices')
-let listOfTypes, total, answer
+let listOfTypes, total
 
 
 async function getInitialData (){
@@ -10,13 +10,9 @@ async function getInitialData (){
 }
 
 router.get('/', async (req, res, next)=> {
-    //this if...else is optional, could only have the code in else block
-    if(listOfTypes && answer) {
-        res.send({listOfTypes, answer})
-    } else{
-        await getInitialData()
-        answer = await getIndices(total, listOfTypes)
-        res.send({listOfTypes, answer})
-    }
+    let answer
+    await getInitialData()
+    answer = await getIndices.getIndices(total, listOfTypes)
+    res.send({listOfTypes, answer, source:await getIndices.getNumOfEachType(listOfTypes)})
 })
 module.exports=router
