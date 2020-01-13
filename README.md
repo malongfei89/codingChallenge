@@ -32,7 +32,7 @@ Also make sure the type of the element that's about to be added must be differen
 
 This way we can distribute data as evenly as possible.
 
-Algorithm is implemented inn server/model/getIndices.js
+Algorithm is implemented in server/model/getIndices.js
 
 
 dataNeeded: 
@@ -84,11 +84,11 @@ and if its index goes out of bound before finding available spot, put it in the 
 
 It's implemented in App.vue, method addColor.
 
-pros: it's not pre-determined, which means the server need not calculate distribution of a specific type until you press the button.
+pros: it's not pre-determined, which means the distribution is not determined until you press the button for each type.
 
 cons: not as evenly distributed as the above one.
 
 It has been deploy under http://ec2-3-134-94-92.us-east-2.compute.amazonaws.com/codingChallenge2/
 
-code repo: 
+code repo: https://github.com/malongfei89/codingChallenge2
 
